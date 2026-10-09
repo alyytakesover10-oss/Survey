@@ -1,0 +1,6 @@
+{
+  "name": "CEP Learning Outcomes Data Collection & Comparison System",
+  "description": "A digital fieldwork data collection and comparative learning outcomes evaluation system for undergraduate Community Engagement Projects.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
