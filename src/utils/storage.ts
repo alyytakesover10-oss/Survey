@@ -2,7 +2,7 @@ import { AssessmentRecord, FieldTestConfig, SchoolType } from '../types';
 import { DEFAULT_FIELD_TEST_CONFIG } from '../data/questionBank';
 import { generatePreloadedJumbledDataset } from './datasetSeeder';
 
-const RECORDS_STORAGE_KEY = 'cep_assessment_records_v2';
+const RECORDS_STORAGE_KEY = 'cep_assessment_records_v3_75_each';
 const FIELD_TEST_CONFIG_KEY = 'cep_field_test_config_v1';
 
 export function loadStoredRecords(): AssessmentRecord[] {
@@ -15,7 +15,9 @@ export function loadStoredRecords(): AssessmentRecord[] {
       return seeded;
     }
     const parsed = JSON.parse(data) as AssessmentRecord[];
-    if (!Array.isArray(parsed) || parsed.length === 0) {
+    const govCount = Array.isArray(parsed) ? parsed.filter(r => r.schoolType === 'Government').length : 0;
+    const pvtCount = Array.isArray(parsed) ? parsed.filter(r => r.schoolType === 'Private').length : 0;
+    if (!Array.isArray(parsed) || govCount < 75 || pvtCount < 75) {
       const config = loadFieldTestConfig();
       const seeded = generatePreloadedJumbledDataset(config, '75_each', 20261009);
       localStorage.setItem(RECORDS_STORAGE_KEY, JSON.stringify(seeded));

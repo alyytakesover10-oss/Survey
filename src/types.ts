@@ -107,6 +107,7 @@ export type ActivePage =
   | 'pvt_test'
   | 'data_center'
   | 'comparison_dashboard'
+  | 'deep_learning'
   | 'question_bank'
   | 'demo_mode'
   | 'methodology'

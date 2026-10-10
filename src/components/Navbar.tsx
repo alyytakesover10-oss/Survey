@@ -13,7 +13,8 @@ import {
   X, 
   Lock, 
   Unlock,
-  Code2 
+  Code2,
+  Cpu 
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -57,6 +58,11 @@ export const Navbar: React.FC<NavbarProps> = ({
       id: 'comparison_dashboard' as ActivePage, 
       label: 'Dashboard (5 Visuals)', 
       icon: BarChart3 
+    },
+    { 
+      id: 'deep_learning' as ActivePage, 
+      label: 'Deep Learning NN', 
+      icon: Cpu 
     },
     { 
       id: 'streamlit_python' as ActivePage, 

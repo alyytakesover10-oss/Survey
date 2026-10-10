@@ -22,7 +22,8 @@ import { QuestionBankView } from './components/QuestionBankView';
 import { DemoModeView } from './components/DemoModeView';
 import { MethodologyView } from './components/MethodologyView';
 import { StreamlitView } from './components/StreamlitView';
-import { ShieldCheck, HardDrive, Code2 } from 'lucide-react';
+import { DeepLearningView } from './components/DeepLearningView';
+import { ShieldCheck, HardDrive, Code2, Cpu } from 'lucide-react';
 
 export default function App() {
   const [activePage, setActivePage] = useState<ActivePage>('comparison_dashboard');
@@ -156,11 +157,19 @@ export default function App() {
           />
         )}
 
+        {activePage === 'deep_learning' && (
+          <DeepLearningView
+            records={records}
+            onNavigateToStreamlit={() => setActivePage('streamlit_python')}
+          />
+        )}
+
         {activePage === 'streamlit_python' && (
           <StreamlitView
             records={records}
             onReseedDataset={handleReseedDataset}
             onNavigateToDashboard={() => setActivePage('comparison_dashboard')}
+            onNavigateToDeepLearning={() => setActivePage('deep_learning')}
           />
         )}
 
